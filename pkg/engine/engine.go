@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"os"
 	"strings"
+
+	"github.com/fatih/color"
 )
 
 var runMap = map[string]func(){
@@ -15,11 +17,15 @@ var runMap = map[string]func(){
 
 
 func Run() {
+	green := color.New(color.FgGreen).SprintFunc()
+	blue := color.New(color.FgBlue).SprintFunc()
+
 	for {
 		reader := bufio.NewReader(os.Stdin)
-		fmt.Print("You: ")
+		fmt.Fprint(os.Stdout, green("🤖  How can I help?\nYou> "))
 		message, _ := reader.ReadString('\n')
-		message = strings.TrimSpace(message)
+		message = blue(strings.TrimSpace(message))
+
 
 		if f, ok := runMap[message]; ok {
 			f()
