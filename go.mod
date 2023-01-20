@@ -5,6 +5,7 @@ go 1.18
 require (
 	github.com/fatih/color v1.13.0
 	github.com/mitchellh/go-homedir v1.1.0
+	github.com/sashabaranov/go-gpt3 v0.0.0-20230112080207-81b5788cd68e
 	github.com/spf13/cobra v1.6.1
 	github.com/spf13/viper v1.14.0
 )

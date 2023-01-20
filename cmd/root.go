@@ -2,10 +2,8 @@ package cmd
 
 import (
 	"fmt"
-	"os"
-
-	"github.com/jstone28/quant/pkg/engine"
 	"github.com/spf13/cobra"
+	"os"
 
 	homedir "github.com/mitchellh/go-homedir"
 	"github.com/spf13/viper"
@@ -23,10 +21,9 @@ examples and usage of using your application. For example:
 Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
-		Run: func(cmd *cobra.Command, args []string) {
-			// TODO: load credentials from viper and the user's config file
-			engine.Run()
-		 },
+	// Uncomment the following line if your bare application
+	// has an action associated with it:
+	//	Run: func(cmd *cobra.Command, args []string) { },
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
@@ -45,7 +42,7 @@ func init() {
 	// Cobra supports persistent flags, which, if defined here,
 	// will be global for your application.
 
-	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.quant.yaml)")
+	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.ci.yaml)")
 
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
@@ -65,9 +62,9 @@ func initConfig() {
 			os.Exit(1)
 		}
 
-		// Search config in home directory with name ".quant" (without extension).
+		// Search config in home directory with name ".ci" (without extension).
 		viper.AddConfigPath(home)
-		viper.SetConfigName(".quant")
+		viper.SetConfigName(".ci")
 	}
 
 	viper.AutomaticEnv() // read in environment variables that match
